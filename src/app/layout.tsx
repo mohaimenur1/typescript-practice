@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Users from "./components/Users";
 import CustomDefineType from "./components/CustomDefineType";
+import Card from "./components/Card";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,27 @@ const user1 = {
   lang: ["Bangla", "English"],
 };
 
+const usersArray = [
+  {
+    name: "Rahi Rahman",
+    age: 24,
+    isRegistered: false,
+    location: "Mirpur 11",
+  },
+  {
+    name: "Faiaz Hossain",
+    age: 24,
+    isRegistered: true,
+    location: "Mirpur 11",
+  },
+  {
+    name: "Abdul Wasi",
+    age: 24,
+    isRegistered: false,
+    location: "Basundhora R/A",
+  },
+];
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,7 +49,21 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Users name="Md.Mohiminur Rahman" age={20} isRegistered={true} />
-        <CustomDefineType lang={["bangla", "english", "hindi"]} user={user1} />
+        <CustomDefineType
+          lang={["bangla", "english", "hindi"]}
+          user={user1}
+          usersArr={usersArray}
+          status="success"
+        />
+        <Card>
+          <h3>Post Title</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi qui
+            vitae dolorem? Vel ullam cum commodi, cupiditate maiores voluptates
+            natus sed ex obcaecati vitae iusto animi qui harum asperiores
+            voluptatibus!
+          </p>
+        </Card>
         <main>{children}</main>
       </body>
     </html>

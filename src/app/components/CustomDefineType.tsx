@@ -1,3 +1,4 @@
+import { Span } from "next/dist/trace";
 import React from "react";
 
 //custom userDefined types
@@ -11,15 +12,36 @@ interface combinedProps {
     isRegistered: boolean;
     lang: string[];
   };
+  usersArr: {
+    name: string;
+    age: number;
+    isRegistered: boolean;
+    location: string;
+  }[];
+  status: "success" | "error" | "loading";
 }
 
-const CustomDefineType = ({ lang, user }: combinedProps) => {
+const CustomDefineType = ({ lang, user, usersArr, status }: combinedProps) => {
+  //   if (status === "success") {
+  //     return <div>Data Fetching Successfully</div>;
+  //   } else if (status === "error") {
+  //     return <div>Error. Data fetching error</div>;
+  //   }
   return (
     <div>
       {lang.map((l) => (
-        <span>{l}</span>
+        <span key={l}>{l}</span>
       ))}
       <div>{user.name}</div>
+      <div>
+        {usersArr.map((user) => {
+          return (
+            <div key={user.name}>
+              <span>{user.name}</span> <span>{user.location}</span>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
